@@ -1,0 +1,18 @@
+{application, owl,
+   [
+      {description, "owl, web ontology"},
+      {vsn,         "0.0.0"},
+      {modules,     [
+         owl_sup,
+         owl_app,
+         owl
+      ]},
+      {registered,  []},
+      {applications,[
+         kernel,
+         stdlib
+      ]},
+      {mod, {owl_app, []}},
+      {env, []}
+   ]
+}.  

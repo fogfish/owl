@@ -41,7 +41,7 @@ like(Pat) ->
 %%
 %%
 find(Pat) ->
-   ets:match(owl, Pat).
+   lists:flatten(ets:match(owl, Pat)). %%TODO: validate pattern
 
 %%
 %%

@@ -1,18 +1,28 @@
 -module(owl).
 
--export([add/1, get/1, like/1, find/1, prefix/2, import/1]).
+-export([add/1, get/1, has/1, like/1, find/1, prefix/2, import/1]).
 
 
 %%
 %%
 add({S, P, O}) ->
    true = ets:insert(owl, {owl_node(S), owl_node(P), owl_node(O)}),
-   ok.
+   ok;
+add(List) ->
+   lists:foreach(fun add/1, List).
 
 %%
 %%
 get(S) ->
    ets:lookup(owl, S).
+
+%%
+%%
+has(Pat) ->
+   case like(Pat) of
+      [Pat] -> true;
+      _     -> false
+   end.
 
 %%
 %%
@@ -60,7 +70,7 @@ owl_node(X)
  when is_integer(X) ->
    X;
 
-owl_node(X) ->
+owl_node(_) ->
    throw(badarg).
 
 

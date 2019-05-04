@@ -1,4 +1,6 @@
-[
-   "a.erl",
-   "b.erl"
-]
+{
+   "suites": [
+      "a.erl",
+      "b.erl"
+   ]
+}

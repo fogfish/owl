@@ -1,7 +1,7 @@
 -module(a).
 -compile({parse_transform, category}).
 
--export([example/0]).
+-export([example/0, delay/0]).
 
 example() ->
    [m_http ||
@@ -14,3 +14,10 @@ example() ->
       _ < lens:c(lens:at(<<"slideshow">>), lens:at(<<"slides">>))
    ].
 
+delay() ->
+   [m_http ||
+      _ > "GET http://httpbin.org/delay/3",
+      _ > "Accept: application/json",
+    
+      _ < 200
+   ].

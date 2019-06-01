@@ -1,7 +1,7 @@
 -module(a).
 -compile({parse_transform, category}).
 
--export([example/0, delay/0]).
+-export([example/0, delay/0i, not_found/0]).
 
 example() ->
    [m_http ||
@@ -21,3 +21,13 @@ delay() ->
     
       _ < 200
    ].
+
+
+not_found() ->
+   [m_http ||
+      _ > "GET http://httpbin.org/delay/3",
+      _ > "Accept: application/json",
+    
+      _ < 404
+   ].
+

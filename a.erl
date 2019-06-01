@@ -1,7 +1,7 @@
 -module(a).
 -compile({parse_transform, category}).
 
--export([example/0, delay/0i, not_found/0]).
+-export([example/0, delay/0, not_found/0]).
 
 example() ->
    [m_http ||
